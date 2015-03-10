@@ -1,5 +1,5 @@
 var sget = require('sget');
-var password = [];
+var password;
 
 function createPassword () {
 	password = sget('Create your password with at least 10 characters and one uppercase letter or exclamation point:');
@@ -7,37 +7,39 @@ function createPassword () {
 }
 
 function check() {
-	verifyPasswordLength();
-	specialCharacters();
-	capitalLetter();
-}
-
-function verifyPasswordLength() {
-	if (passwordLength() === true) {
-		console.log("You have at least 10 characters.");
+	if (checkPasswordLength() && (specialCharacters() || capitalLetter())) {
+	console.log("Confirmed password!");
 	} else {
-		console.log("Please enter in at least 10 characters.");
+		console.log("Try again, there was an error creating your password.");
 	}
 }
 
-function passwordLength() {
+
+function checkPasswordLength() {
 	if (password.length > 10) {
 		return true;
+	} else {
+		return false;
 	} 
 }
 
-function specialCharacters() {
-	for (var i = 0; i < password.length; i++) {
-	if (password[i].indexOf('!') != -1) {
-		return true;
-	}}
+function specialCharacters() { {
+		if (password.indexOf('!') >= 0) {
+			console.log('hello!!!!');
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 function capitalLetter() {
-	for (var i = 0; i < password.length; i++) {
-	if (password[i].indexOf() == password.toUpperCase) {
-		console.log('You have a capital');
-	}}
+	if (password !== password.toLowerCase()) {
+		console.log('hello');
+		return true;
+	} else {
+		return false;
+	}
 }
 
 
