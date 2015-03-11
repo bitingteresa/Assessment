@@ -30,7 +30,7 @@ function menu() {
 			break;
 		case 4:
 			rideMotor();
-			randomNum();
+			negRandomNum();
 			break;
 		case 5:
 			addPoints();
@@ -56,7 +56,7 @@ function takeNap() {
 }
 
 function rideMotor() {
-	console.log('\n' + nameInput + ' rode the sidecar like a champ, nice driving.');
+	console.log('\n' + nameInput + ' rode the sidecar like a champ,  but that was pretty reckless.');
 }
 
 function quit() {
@@ -77,6 +77,14 @@ function randomNum() {
 	console.log(nameInput + " is " + num + " times happier.");
 	menu();
 }
+
+function negRandomNum() {
+	var num = Math.floor(Math.random() * -10 + 1)
+	scoreBoard.push(num);
+	console.log(nameInput + " is " + num + " times sadder.");
+	menu();
+}
+
 
 function addPoints() {
 	points = scoreBoard.reduce(function(score1, score2) {
