@@ -1,6 +1,3 @@
-/* keeper of one animal - user prompted to name it - 4 actions - then display result with animal's name
-bonus scoring system that has random number of points for action and final score display when user quits */
-
 var sget = require('sget');
 var menuInput;
 var nameInput;
@@ -18,19 +15,19 @@ function menu() {
 		case 1:
 			climbTree();
 			score += randomNum();
-			break;
+			menu();
 		case 2:
 			shareApple();
 			score += randomNum();
-			break;
+			menu();
 		case 3:
 			takeNap();
 			score += randomNum();
-			break;
+			menu();
 		case 4:
 			rideMotor();
 			score -= randomNum();
-			break;
+			menu();
 		case 5:
 			quit();
 			break;
@@ -43,7 +40,6 @@ function menu() {
 
 function climbTree() {
 	console.log('\n' + nameInput + ' is happy to be hanging with you!');
-	
 }
 
 function shareApple() {
@@ -59,7 +55,7 @@ function rideMotor() {
 }
 
 function quit() {
-	console.log("This is your score ");
+	console.log("This is your score " + score);
 	menuInput = sget('Are you sure you want to quit? y/n').trim()
 	if (menuInput === 'y') {
 		process.exit(0);
@@ -72,8 +68,7 @@ function quit() {
 }
 
 function randomNum() {
-	console.log("Your points " + Math.floor(Math.random() * 10 + 1));
-	menu();
+	return Math.floor(Math.random() * 10 + 1);
 }
 
 
